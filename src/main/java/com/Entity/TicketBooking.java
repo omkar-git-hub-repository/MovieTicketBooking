@@ -43,6 +43,7 @@ public class TicketBooking {
 	public void setSeatBooked(int seatBooked) {
 		this.seatBooked = seatBooked;
 	}
+	
 	@Override
 	public String toString() {
 		return "TicketBooking [id=" + id + ", MovieName=" + MovieName + ", CustomerName=" + CustomerName + ", ShowTime="
