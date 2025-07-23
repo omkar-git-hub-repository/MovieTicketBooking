@@ -35,6 +35,11 @@ public class App {
                 v.viewBooking();
                 break;
 
+            case 3:
+                UpdateSeats u = new UpdateSeats();
+                u.updateSeat();
+                break;
+
             default:
                 break;
         }
