@@ -30,6 +30,11 @@ public class App {
                 b.bookTicket();
                 break;
 
+            case 2:
+                ViewBooking v = new ViewBooking();  
+                v.viewBooking();
+                break;
+
             default:
                 break;
         }
