@@ -1,5 +1,7 @@
 package com.practice.MovieTicketBooking;
 
+import org.hibernate.SessionFactory;
+
 import com.Movie.Utility.HibernateUtility;
 
 /**
@@ -11,6 +13,8 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        HibernateUtility.getSessionFactory();
+
+        SessionFactory factory = HibernateUtility.getSessionFactory();
+       
     }
 }
