@@ -41,7 +41,7 @@ public class App {
                 break;
             
             case 4:
-                DeleteByID d = new DeleteByID();
+                DeleteByName d = new DeleteByName();
                 d.deleteByName();
                 break;
 

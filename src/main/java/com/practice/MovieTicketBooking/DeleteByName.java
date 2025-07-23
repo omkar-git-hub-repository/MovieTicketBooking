@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 import com.Entity.TicketBooking;
 import com.Movie.Utility.HibernateUtility;
 
-public class DeleteByID {
+public class DeleteByName {
 
     public void deleteByName() {
         SessionFactory factory = HibernateUtility.getSessionFactory();
