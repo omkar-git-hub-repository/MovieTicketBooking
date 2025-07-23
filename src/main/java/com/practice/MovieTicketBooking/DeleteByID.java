@@ -1,5 +1,6 @@
 package com.practice.MovieTicketBooking;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.hibernate.Session;
@@ -11,32 +12,34 @@ import com.Movie.Utility.HibernateUtility;
 
 public class DeleteByID {
 
-    public void deleteById(int showId)
-    {
-        System.out.println("Deleting Show with Show ID: " + showId);
-        
+    public void deleteByName() {
         SessionFactory factory = HibernateUtility.getSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        System.out.println("Enter Show ID to delete: ");
         Scanner sc = new Scanner(System.in);
-        int idToDelete = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        System.out.print("Enter Name to delete: ");
+        String nameToDelete = sc.nextLine();
 
-        
-        TicketBooking ticket = session.find(TicketBooking.class, idToDelete);
-        session.remove(ticket);
-        System.out.println("Ticket with Show ID " + idToDelete + " deleted successfully!");
-        
-        if (ticket == null) {
-            System.out.println("No ticket found with Show ID: " + idToDelete);
+        // Use the exact case-sensitive field name: 'CustomerName'
+        List<TicketBooking> tickets = session
+                .createQuery("FROM TicketBooking WHERE CustomerName = :name", TicketBooking.class)
+                .setParameter("name", nameToDelete)
+                .getResultList();
+
+        if (tickets.isEmpty()) {
+            System.out.println("No records found with the name: " + nameToDelete);
         } else {
-            System.out.println("Ticket deleted successfully!");
+            System.out.println("Deleting the following record(s):");
+            for (TicketBooking ticket : tickets) {
+                System.out.println(ticket);
+                session.remove(ticket); // deletes from database
+            }
         }
 
         transaction.commit();
         session.close();
+        sc.close();
     }
-    
+
 }

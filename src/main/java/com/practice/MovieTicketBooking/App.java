@@ -39,6 +39,11 @@ public class App {
                 UpdateSeats u = new UpdateSeats();
                 u.updateSeat();
                 break;
+            
+            case 4:
+                DeleteByID d = new DeleteByID();
+                d.deleteByName();
+                break;
 
             default:
                 break;
